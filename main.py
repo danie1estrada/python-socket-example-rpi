@@ -14,7 +14,7 @@ GPIO.setup(led, GPIO.OUT)
 def index():
     return "Server running"
 
-@app.route('/turn_off')
+@app.route('/turn_on')
 def turn_on_web():
     try:
         GPIO.output(led, True)
