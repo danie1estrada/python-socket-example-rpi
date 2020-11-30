@@ -5,7 +5,8 @@ from flask_socketio import SocketIO, send
 
 led = 14
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins='*')
+socketio = SocketIO(app)
+socketio.init_app(app, cors_allowed_origins='*')
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(led, GPIO.OUT)
