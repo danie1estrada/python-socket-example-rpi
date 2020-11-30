@@ -14,6 +14,22 @@ GPIO.setup(led, GPIO.OUT)
 def index():
     return "Server running"
 
+@app.route('/turn_off')
+def turn_on_web():
+    try:
+        GPIO.output(led, True)
+    except:
+        return "Ocurrió un error"
+    return "Se prendió el led"
+
+@app.route('/turn_off')
+def turn_off_web():
+    try:
+        GPIO.output(led, False)
+    except:
+        return "Ocurrió un error"
+    return "Se apagó el led"
+
 @socketio.on('turn_on')
 def turn_on():
     GPIO.output(led, True)
